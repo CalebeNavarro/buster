@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm";
+import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Cart } from "./cart.entity";
 
@@ -23,8 +23,9 @@ export class User {
   @Column({type: "boolean", default: false})
   admin: boolean;
 
-  @OneToMany(() => Cart, (cart) => cart.user)
-  carts: Cart[]
+  @OneToOne(() => Cart)
+  @JoinColumn()
+  cart: Cart
 
 
   constructor() {

@@ -22,9 +22,15 @@ export const errorMiddleware = (err: any, request: Request, response: Response, 
         code: 409,
         message: "Email already exist",
       });
+    } else if (error.code === "22P02") {
+      return response.status(400).json({
+        status: "error",
+        code: 400,
+        message: "Invalid product_id",
+      });
     }
   }
-
+  console.error("error", err)
   return response.status(500).json({
     status: "error",
     code: 500,
