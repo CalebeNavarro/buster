@@ -12,16 +12,20 @@ const userCreateController = async (req: Request, res: Response) => {
     try {
       let emailAdmin: string = "";
       jwt.verify(token as string, process.env.JWT_SECRET as string,async (err: any, decoded: any) => {
-        emailAdmin = decoded.email;
+        emailAdmin = decoded?.email;
       })
       const user =await userListByEmail(emailAdmin);
-  
+
       if (user.admin) {
         const newUser = await userCreateService({name, email, password, admin});
         return res.status(201).send(newUser);
+      } else {
+      return res.status(400).send({"message": "Invalind Token!"})
       }
+
     } catch (error) {
-      return res.status(400).send({"message": "Invalind Token or email already exist!"})
+      console.log(error)
+      return res.status(400).send({"message": "Email already exist!"})
     }
   }
 

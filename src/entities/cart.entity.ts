@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryColumn, ManyToMany, JoinTable } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Product } from "./product.entity";
+import { User } from "./user.entity";
 
 
 @Entity()

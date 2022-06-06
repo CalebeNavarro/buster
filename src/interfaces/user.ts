@@ -7,7 +7,7 @@ export interface IUser {
   password: string;
   money: number;
   admin: boolean;
-  carts: ICart[]
+  cart: ICart
 }
 
 export interface IUserLogin {
@@ -27,7 +27,6 @@ export interface ICart {
   id: string;
   paid: boolean;
   total: number;
-  user: IUser;
   products: IProduct[]
 }
 
