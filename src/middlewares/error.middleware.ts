@@ -2,7 +2,8 @@ import { Request, Response, NextFunction } from 'express'
 import { QueryFailedError } from 'typeorm';
 import { AppError } from '../errors/appError';
 import { DatabaseError } from 'pg-protocol';
-import "express-async-errors"
+import "express-async-errors";
+
 
 export const errorMiddleware = (err: any, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
