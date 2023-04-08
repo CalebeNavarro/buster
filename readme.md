@@ -1,6 +1,6 @@
 # Buster
 
-Projeto em andamento
+Projeto finalizado
 
 # Usuário [/users]
 
